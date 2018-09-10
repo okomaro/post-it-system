@@ -122,7 +122,6 @@ WHERE users_id = users.id AND color_id=color.id;';
 <?php	}
 	else {
 		echo '<p> You are not logged in and therefore can not see post-it system</p>';
-		echo 'please '
 	}
 	
 ?>
