@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 <?php
-	session_start();
 	$headertext = filter_input(INPUT_POST, 'headertext') or die ('insert headertext parameters');
 	$bodytext = filter_input(INPUT_POST, 'bodytext') or die ('Insert bodytext parameters');
 	$colorid = filter_input(INPUT_POST, 'colorid') or die ('Insert colorid parameters');
