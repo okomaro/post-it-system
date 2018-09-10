@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Post whatever you want</title>
+
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<!-- main style - stays the last because it overrides the themes of jquery -->
+	<link rel="stylesheet" href="../css/style.css">
+
+
+	<script>
+	$( function() {
+		$( ".draggable" ).draggable();
+	} );
+	</script>
+	<!--Delete the post-it-->
+
+	<script type="text/javascript">
+
+	$(function(){
+
+		$(".draggable").sortable({
+			connectWith: '#deleteArea',
+			update: function(event, ui) {
+				//Run this code whenever an item is dragged and dropped out of this list
+				var order = $(this).sortable('serialize');
+			},
+			helper: 'clone'
+		});
+
+		$("#deleteArea").droppable({
+			accept: '.draggable',
+			activeClass: 'dropArea',
+			hoverClass: 'hovertrash',
+			drop: function(event, ui) {
+				ui.draggable.remove();
+			}
+		});
+	});
+</script>
+</head>
+
+<body>
+	<div class="container sidebar">
+		<h1>Post-it hvad man vil</h1>
+		<div>
+			<form action="../new-postit.php" method="post">
+				<h3>Overskrift:</h3>
+				<input class="textfield-small" type="text" name="headertext"  placeholder="Overskrift" autocomplete="off" required><br/>
+				<h3>Huskenote:</h3>
+				<input class="textfield-large" type="text" name="bodytext" placeholder="Hvad skal man huske?" autocomplete="off" required>
+
+				<h3>Navn:</h3>
+				<input class="textfield-small" type="text" name="author" placeholder="Dit navn" autocomplete="off" required><br/>
+
+				<h3>Post-it farve:</h3>
+				<input type="radio" name="color" >gul
+				<input type="radio" name="color" >grøn
+				<input type="radio" name="color" >blå
+				<br/>
+
+				<h3>Post-it farve dropdown:</h3>
+			<select name="colorid" required >gul
+				<option value="1">gul</option>
+				<option value="2">grøn</option>
+				<option value="3">blå</option>
+			</select>
+
+				<!-- <h3>Date/time:</h3>
+				<input class="textfield-small" type="datetime-local" id="date-time"
+				name="date-time" value="datestamp"> -->
+
+				<br/>
+				<button class="" id="primary" name="submit" type="submit" value="submit-true">
+					Post it!
+				</button>
+				<button id="secondary" name="reset" type="submit" value="submit-false">
+					nullstil
+				</button>
+
+			</form>
+		</div>
+	</div>
+	<div class="container whiteboard">
+
+			<div class="draggable  postit yellow">
+				<h2>HUSK!</h2>
+				<p>- Æbler <br>
+					- Ris <br>
+					- Mælk</p>
+					<p class="name">Emil</p>
+					<time>28/8-2018</time>
+			</div>
+
+				<div class="draggable  postit blue">
+					<h2>Æblekage</h2>
+					<p>- Æbler <br>
+						- Kage<br>
+						Mix sammen, og bag ved 200 grader celcius i 20 min.</p>
+						<p class="name">Per</p>
+						<time>29/8-2018</time>
+				</div>
+
+				<!--<div class="draggable ui-widget-content postit blue">
+						<h2>Æblekage</h2>
+						<p>- Æbler <br>
+							- Kage<br>
+							Mix sammen, og bag ved 200 grader celcius i 20 min.</p>
+							<p class="name">Per</p>
+							<time>29/8-2018</time>
+					</div>-->
+
+						<div class="draggable  postit yellow">
+							<h2>Æblekage</h2>
+							<p>- Æbler <br>
+								- Kage<br>
+								Mix sammen, og bag ved 200 grader celcius i 20 min.</p>
+								<p class="name">Per</p>
+								<time>29/8-2018</time>
+							</div>
+
+							<div class="draggable ui-widget-content postit green">
+								<h2>Overskrift</h2>
+								<p>Tekst</p>
+								<p class="name">Navn</p>
+								<time>Dato</time>
+							</div>
+
+							<div class="draggable ui-widget-content postit yellow">
+								<h2>HUSK!</h2>
+								<p>- Æbler <br>
+									- Ris <br>
+									- Mælk</p>
+									<p class="name">Emil</p>
+
+									<time>28/8-2018</time>
+
+								</div>
+
+								<div class="draggable ui-widget-content postit blue">
+									<h2>Æblekage</h2>
+									<p>- Æbler <br>
+										- Kage<br>
+										Mix sammen, og bag ved 200 grader celcius i 20 min.</p>
+
+										<p class="name">Per</p>
+										<time>29/8-2018</time>
+									</div>
+
+							</div>
+
+							<div class="footer-tools" id="deleteArea">
+
+								<!--Trash Can Icon-->
+								<div class="icon-trash ui-droppable">
+									<div class="trash-lid" style="background-color: #D3A38F;"></div>
+									<div class="trash-container" style="background-color: #D3A38F;"></div>
+									<div class="trash-line-1"></div>
+									<div class="trash-line-2"></div>
+									<div class="trash-line-3"></div>
+								</div>
+
+								<!-- regroup button -->
+
+								<!-- redo button -->
+
+						</div>
+				</body>
+				</html>

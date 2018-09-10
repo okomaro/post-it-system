@@ -1,0 +1,305 @@
+* {
+	margin: 0;
+	padding: 0;
+
+	/* With these codes padding and border does not increase it's width and gives intuitive style.*/
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	margin: 20px;
+	font-family: sans-serif;
+	font-size: 1.2em;
+	display: flex;
+	flex-wrap: row wrap;
+	justify-content: center;
+}
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 30px;
+	align-self: flex-start;
+}
+
+.user-form {
+	display: flex;
+	flex-wrap: row wrap;
+	width: 30%;
+	border-radius: 20px;
+	border: 1px solid lightgray; 
+	background-color: #ededed;
+}
+
+.whiteboard {
+	width: 70%;
+	order: -1;
+}
+.sidebar {
+	display: flex;
+	flex-wrap: row wrap;
+	width: 30%;
+	border-radius: 20px;
+	/* border-left: 1px solid lightgray; */
+	background-color: #ededed;
+}
+.footer-tools {
+	display: flex;
+	flex-wrap: row wrap;
+	position: fixed;
+	bottom: 10px;
+	left: 50px;
+	border: 1px solid #D3A38F;
+	border-radius: 20px;
+	background: none;
+	height: 80px;
+	width: 10%;
+}
+
+.postit {
+	width: 40vw;
+	max-width: 35vh;
+	height: 40vw;
+	max-height: 35vh;
+	margin: 10px;
+	padding: 10px;
+	border-bottom-right-radius: 150px 10px;
+	transform: rotate(-2deg);
+	-webkit-box-shadow: 0 15px 10px #777;
+	-moz-box-shadow: 0 15px 10px #777;
+	box-shadow: 3px 3px 3px -4px black;
+	/* font-family: 'Shadows Into Light', cursive; */
+	font-family: 'Coming Soon', cursive;
+}
+.postit button {
+	position: absolute;
+	background: none;
+	color: black;
+	margin: 5px;
+	top: 0;
+	right: 0;
+}
+
+.yellow {
+	background: linear-gradient(145deg, #FEE96E, #FFF7D3);
+}
+.blue {
+	background: linear-gradient(145deg, #09BACC, #08D3F6);
+}
+.green {
+	background: linear-gradient(145deg, #9AC64E, #B0E95A);
+}
+
+.pink {
+	background: linear-gradient(145deg, #ff63c0, #ff0a9d);
+}
+
+.grey {
+	background: linear-gradient(145deg, #dddbdc, #fcf7f9);
+}
+
+
+.postit:nth-child(1) {
+	transform: rotate(-3deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+.postit:nth-child(2) {
+	transform: rotate(2deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+.postit:nth-child(3) {
+	transform: rotate(-1deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+.postit:nth-child(4) {
+	transform: rotate(2deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+.postit:nth-child(5) {
+	transform: rotate(-1deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+.postit:nth-child(6) {
+	transform: rotate(-4deg);
+	box-shadow: 4px 4px 4px -5px black;
+}
+h1 {
+	font-size: 2em;
+	font-family: 'Coming Soon', cursive;
+}
+h2 {
+	font-size: 1.4em;
+	text-align: center;
+}
+h3 {
+	font-size: 1.1em;
+	font-weight: 500;
+	margin-top: 15px;
+}
+p {
+	font-size: 0.8em;
+}
+.name {
+	position: absolute;
+	margin: 10px;
+	bottom: 0;
+	right: 0;
+	font-style: oblique;
+	font-size: 1em;
+}
+time {
+	position: absolute;
+	margin: 10px;
+	bottom: 0;
+	left: 0;
+	font-style: oblique;
+	font-size: 0.8rem;
+}
+li {
+	cursor: move;
+}
+/* Styling side-bar */
+
+input {
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-top: 10px;
+	font-family: 'Coming Soon', cursive;
+}
+
+
+.textfield-large {
+	font-size: 0.9em;
+	margin: 10px 0;
+	padding: 20px;
+	max-height: 400px;
+	width: 100%;
+	border-radius: 20px;
+	border-style: hidden;
+	background: white;
+	font-family: 'Coming Soon', cursive;
+}
+.textfield-small {
+	font-size: 0.9em;
+	margin: 10px 0;
+	padding: 20px;
+	height: 10px;
+	max-width: 400px;
+	width: 100%;
+	border-radius: 20px;
+	border-style: hidden;
+	background: white;
+}
+button {
+	margin-top: 20px;
+	padding: 0.5em 1em; 
+	border: none;
+	background: none;
+	border-radius: 10px;
+}
+
+.submit-button {
+	
+	font: 700 2em;
+	background: #fa619c;
+	font-size: 1em;
+	box-shadow: 1px 1px 5px #CBCBCB;
+  
+}
+.reset-button {
+	margin-left: 10px;
+	margin-bottom: 0;
+	font-size: .8em;
+	background: #e6e6e6;
+	color: #141414;
+	border: none;
+	text-decoration: underline;
+	box-shadow: 1px 1px 5px #CBCBCB;
+}
+
+
+/*MEDIA queries*/
+
+@media only screen and (max-width: 800px) {
+body {
+	margin: 10px;
+	justify-content: space-between;
+}
+
+.whiteboard {
+	width: 50%;
+}
+
+.sidebar {
+	width: 50%;
+}
+
+.postit {
+	min-width: 25vh;
+	max-height: auto;
+	margin: 10px;
+}
+.postit p {
+	font-size: 0.8em;
+	margin-top: 0;
+}
+.postit h2 {
+	font-size: 0.8em;
+	margin: 0;
+}
+.sidebar h1 {
+	font-size: 1.2em;
+}
+.textfield-large {
+	width: 90%;
+}
+.textfield-small {
+	width: 90%;
+}
+
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+body {
+	/* On small screens, we are no longer using row direction but column */
+	flex-direction: column;
+	justify-content: center;
+	margin: 10px;
+}
+
+.whiteboard {
+	order: 0;
+	width: 100%;
+	min-width: 300px;
+}
+
+.sidebar {
+		order: -1;
+			justify-content: flex-start;
+			width:100%;
+			max-width: 300px;
+}
+
+.sidebar h3 {
+		font-size: 0.9em;
+		margin-top: 0;
+}
+
+.postit h2 {
+	font-size: 0.7em;
+	margin: 0;
+}
+
+.postit p {
+	font-size: 0.6em;
+	margin: 0;
+}
+
+time {
+		font-size: 0.6em;
+			margin: 0;
+}
+
+
+}

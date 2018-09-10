@@ -1,0 +1,59 @@
+<h3>Post-it farve as dropdown:</h3>-->
+	    <select name="colorid" required >-->
+
+		  <?php
+	  require_once('dbcon.php');
+
+		    $sql = 'select id,colorname from color';
+		    $stmt = $link->prepare($sql);
+		    $stmt->execute();
+		    $stmt->bind_result($colorid, $colorname);
+		    while($stmt->fetch()){
+					echo '<option value="'.$colorid.'">'.$colorname.'</option>'.PHP_EOL;
+		    }
+		  ?>
+			</select>-->
+				
+if($S_SESSION['uid'])
+==$uid) {
+<form
+}
+
+
+
+
+<?php
+		require_once('dbcon.php');
+    $sql = 'select postit.id, createdate, author, headertext, bodytext, cssclass FROM postit INNER JOIN color ON color_id=color.id';
+    $stmt = $link->prepare($sql);
+		$stmt->execute();
+	$stmt->bind_result($pid, $createdate, $author, $htext, $btext, $cssclass);
+	while ($stmt->fetch()) { ?>
+
+	<div class="draggable postit <?=$cssclass?>">
+
+<form action="delete_postit.php" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')" >
+	<button type="submit" name="pid" value="<?=$pid?>"><i class="far fa-trash-alt fa-fa-lg" ></i></button>
+</form>
+
+		<h2><?=$htext?></h2>
+		<p><?=$btext?></p>
+		<p class="name"><?=$author?></p>
+		<time datetime="Y-M-D" ><?=$createdate?></time>
+	</div>
+
+<?php } ?>
+
+
+	
+				<h3>User name from login:</h3>
+			<?php
+		  require_once('dbcon.php');
+		    $sql = 'select username from users where id=1';
+		    $stmt = $link->prepare($sql);
+		    $stmt->execute();
+		    $stmt->bind_result($author);
+		    while($stmt->fetch()){
+					echo '<p>.$author.'.$colorname.PHP_EOL;
+		    }
+		  ?>
