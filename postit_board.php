@@ -28,12 +28,10 @@
 </head>
 
 <body>
-	
-	<div class="container sidebar">
-		<div> 
-			<h3>User status</h3>
+	<div id="welcome-field" class="container sidebar">
+		<h3>User status</h3>
 			
-			<?php
+<?php
 	
 	if(isset($_SESSION['uid'])){ ?>
 		Currently logged in as <?=$_SESSION['uname']?> with id=<?=$_SESSION['uid']?>
@@ -47,7 +45,19 @@
 	}
 	
 ?>
-	</div>
+					
+	</div>	
+	
+	
+	
+	
+			
+<?php
+	if(isset($_SESSION['uid'])){ ?>
+	
+	
+	<div class="container sidebar">
+
 		<h1>Post-it hvad man vil</h1>
 		<div>
 			<form action="new_post_it.php" method="post">
@@ -77,8 +87,11 @@
 							 
 		</div>
 	</div>
+	
+	
+	
 	<div class="container whiteboard">
-		
+		<!--		good code-->
 		<?php
 		require_once('dbcon.php');
     $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, cssclass, users.id AS uid, username, cssclass FROM postit, users, color 
@@ -101,9 +114,22 @@ WHERE users_id = users.id AND color_id=color.id;';
 	</div>
 
 <?php } ?>
-
-
+		
+<!--		end of good code-->
 
 		</div>
-				</body>
-				</html>
+		
+<?php	}
+	else {
+		echo '<p> You are not logged in and therefore can not see post-it system</p>';
+		echo 'please '
+	}
+	
+?>
+
+				
+	
+	</body>
+				
+
+</html>
