@@ -31,7 +31,7 @@
 	
 	<div class="container sidebar">
 		<div> 
-			<h3>User info</h3>
+			<h3>User status</h3>
 			
 			<?php
 	
@@ -60,7 +60,7 @@
 				
 				<?php
 		  require_once('dbcon.php');
-		    $sql = 'select id,colorname from color';
+		    $sql = 'select id, colorname from color';
 		    $stmt = $link->prepare($sql);
 		    $stmt->execute();
 		    $stmt->bind_result($colorid, $colorname);
@@ -78,6 +78,7 @@
 		</div>
 	</div>
 	<div class="container whiteboard">
+		
 		<?php
 		require_once('dbcon.php');
     $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, cssclass, users.id AS uid, username, cssclass FROM postit, users, color 
@@ -95,7 +96,7 @@ WHERE users_id = users.id AND color_id=color.id;';
 
 		<h2><?=$htext?></h2>
 		<p><?=$btext?></p>
-		<p class="name"><?=$uid?></p>
+		<p class="name"><?=$username?></p>
 		<time datetime="Y-M-D" ><?=$createdate?></time>
 	</div>
 

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 	session_start();
 	$headertext = filter_input(INPUT_POST, 'headertext') or die ('insert headertext parameters');

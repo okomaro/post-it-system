@@ -1,12 +1,4 @@
-<?php session_start(); ?><!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-	<?php
+<?php
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!
 session_start();
@@ -26,7 +18,6 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
-?>
-	You are now logged out :-(
-</body>
-</html>
+
+echo "You are now logged out :-(";
+	
