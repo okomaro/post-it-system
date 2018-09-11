@@ -27,16 +27,19 @@ body {
 .user-form {
 	display: flex;
 	flex-wrap: wrap;
-	width: 35%;
+	justify-content: space-between;
 	min-width: 360px;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
-	background-color: #ededed;
+	margin: 10px;
+/*	background-color: #ededed;*/
 }
 
 .welcome-field {
-	display: block;
-
+/*	display: block;*/
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:flex-start;
 	width: 100%;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
@@ -174,6 +177,10 @@ h3 {
 }
 p {
 	font-size: 0.8em;
+}
+
+strong {
+	margin-top: 30px;
 }
 .name {
 	position: absolute;

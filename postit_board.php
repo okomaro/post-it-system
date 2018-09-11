@@ -33,11 +33,12 @@
 </head>
 
 <body>
-	<div class="container welcome-field">
-		<h3>User status</h3>
-			
+<div class="container welcome-field">
+		
+	<h3>User status</h3>
+
 <?php
-	
+
 	if(isset($_SESSION['uid'])){ ?>
 		Currently logged in as <?=$_SESSION['uname']?> with id=<?=$_SESSION['uid']?>
 		<form action="logout.php" method="post">
@@ -45,18 +46,37 @@
 		</form>
 		
 <?php	}
-	else {
-		echo 'Not logged in';
-	}
+	else { ?>
+		
+<form action="user_add.php" method="post">
+	<div class="container user-form">
+		<legend>New user</legend>
+		<input type="text" name="un" placeholder="Username" autocomplete="off" required >
+		<input type="password" name="pw" placeholder="Password" autocomplete="off" required>
+		<button  class="submit-button" type="submit">opret</button>
+	</div>
+</form>
+
+<form action="user_login.php" method="post">
+	<div class="container user-form">
+		<legend>Login in</legend>
+		<input type="text" name="un" placeholder="Username" required autocomplete="off">
+		<input type="password" name="pw" placeholder="Password" required autocomplete="off">
+		<button class="submit-button" type="submit">login</button>
+	</div>
+</form>
+
+<?php	}
 	
 ?>
-					
-	</div>	
+		
+
+	
+</div> <!--		end of welcome-field	-->
 	
 	
 	
-	
-			
+<!-- if user is logged in, show the postit system -->
 <?php
 	if(isset($_SESSION['uid'])){ ?>
 	
@@ -128,10 +148,11 @@ WHERE users_id = users.id AND color_id=color.id;';
 		
 <?php	}
 	else {
-		echo '<p> You are not logged in and therefore can not see post-it system</p>';
+		echo '<strong> You are not logged in and therefore can not see post-it system</strong>';
 	}
 	
 ?>
+<!-- end of block: if user is loged in show the postit system -->
 
 				
 	
