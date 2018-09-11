@@ -8,13 +8,18 @@
 	<title>Post whatever you want</title>
 
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+	
 	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	
 	<!-- main style - stays the last because it overrides the themes of jquery -->
 	<link rel="stylesheet" href="css/style.css">
 
@@ -28,7 +33,7 @@
 </head>
 
 <body>
-	<div id="welcome-field" class="container sidebar">
+	<div class="container welcome-field">
 		<h3>User status</h3>
 			
 <?php
@@ -56,7 +61,7 @@
 	if(isset($_SESSION['uid'])){ ?>
 	
 	
-	<div class="container sidebar">
+	<div class=" container sidebar">
 
 		<h1>Post-it hvad man vil</h1>
 		<div>
@@ -94,8 +99,10 @@
 		<!--		good code-->
 		<?php
 		require_once('dbcon.php');
-    $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, cssclass, users.id AS uid, username, cssclass FROM postit, users, color 
+    $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, cssclass, users.id AS uid, username, cssclass 
+	FROM postit, users, color 
 WHERE users_id = users.id AND color_id=color.id;';
+		
     $stmt = $link->prepare($sql);
 		$stmt->execute();
 	$stmt->bind_result($pid, $createdate, $htext, $btext, $cssclass, $uid, $username, $cssclass);

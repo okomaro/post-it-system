@@ -12,37 +12,53 @@ body {
 	font-family: sans-serif;
 	font-size: 1.2em;
 	display: flex;
-	flex-wrap: row wrap;
-	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }
+
 .container {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: row wrap;
 	padding: 30px;
 	align-self: flex-start;
 }
 
 .user-form {
 	display: flex;
-	flex-wrap: row wrap;
-	width: 30%;
+	flex-wrap: wrap;
+	width: 35%;
+	min-width: 360px;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
 	background-color: #ededed;
 }
 
-.whiteboard {
-	width: 70%;
+.welcome-field {
+	width: 100%;
+	border-radius: 20px;
+	border: 1px solid lightgray; 
 	order: -1;
 }
+
+.whiteboard {
+	width: 70%;
+	order: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .sidebar {
 	display: flex;
-	flex-wrap: row wrap;
+	flex-wrap: wrap;
 	width: 30%;
+	min-width: 360px;
 	border-radius: 20px;
 	/* border-left: 1px solid lightgray; */
 	background-color: #ededed;
 }
+
+
+
 .footer-tools {
 	display: flex;
 	flex-wrap: row wrap;
@@ -71,6 +87,21 @@ body {
 	/* font-family: 'Shadows Into Light', cursive; */
 	font-family: 'Coming Soon', cursive;
 }
+
+.postit p {
+display: block;
+  word-wrap: break-word;
+  max-height: 3.6em;
+  line-height: 1.8em;	
+}
+
+.postit h2 {
+display: block;
+  word-wrap: break-word;
+  max-height: 3.6em;
+  line-height: 1.8em;	
+}
+
 .postit button {
 	position: absolute;
 	background: none;
@@ -227,11 +258,12 @@ body {
 }
 
 .whiteboard {
-	width: 50%;
+	width: 55%;
 }
 
 .sidebar {
-	width: 50%;
+	width: 45%;
+	min-width: 360px;
 }
 
 .postit {
