@@ -1,14 +1,13 @@
 * {
 	margin: 0;
 	padding: 0;
-
 	/* With these codes padding and border does not increase it's width and gives intuitive style.*/
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 body {
-	margin: 20px;
+	margin: 40px;
 	font-family: sans-serif;
 	font-size: 1.2em;
 	display: flex;
@@ -17,9 +16,11 @@ body {
 }
 
 .container {
+/*
 	display: flex;
-	flex-wrap: row wrap;
-	padding: 30px;
+	flex-wrap: wrap;
+*/
+	padding: 20px;
 	align-self: flex-start;
 }
 
@@ -34,6 +35,8 @@ body {
 }
 
 .welcome-field {
+	display: block;
+
 	width: 100%;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
@@ -45,6 +48,8 @@ body {
 	order: 0;
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 20px;
+	justify-content: center;
 }
 
 .sidebar {
@@ -53,10 +58,10 @@ body {
 	width: 30%;
 	min-width: 360px;
 	border-radius: 20px;
-	/* border-left: 1px solid lightgray; */
 	background-color: #ededed;
+	margin-top: 40px;
+	order: 1;
 }
-
 
 
 .footer-tools {
