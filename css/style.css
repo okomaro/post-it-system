@@ -12,14 +12,10 @@ body {
 	font-size: 1.2em;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-between;
 }
 
 .container {
-/*
-	display: flex;
-	flex-wrap: wrap;
-*/
 	padding: 20px;
 	align-self: flex-start;
 }
@@ -27,7 +23,6 @@ body {
 .user-form {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	min-width: 360px;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
@@ -35,13 +30,15 @@ body {
 /*	background-color: #ededed;*/
 }
 
+
 .welcome-field {
 	display: flex;
 	flex-wrap: wrap;
-/*	justify-content:flex-start;*/
+	justify-content: space-between;
 	width: 70%;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
+	background-color: #ededed;
 	order: -1;
 }
 
@@ -54,10 +51,11 @@ body {
 	justify-content: center;
 }
 
+
 .sidebar {
 	display: flex;
 	flex-wrap: wrap;
-	width: 30%;
+	width: 24%;
 	min-width: 360px;
 	border-radius: 20px;
 	background-color: #ededed;
@@ -65,6 +63,17 @@ body {
 	order: 1;
 }
 
+.notice{
+	position: absolute;
+	top:30%;
+	left:30%;
+	border: 1px solid red; 
+/*	background-color: #ededed;*/
+	color: #F50D11;
+	border-radius: 20px;
+	min-width: 360px;
+	padding: 40px;
+}
 
 .footer-tools {
 	display: flex;
@@ -80,10 +89,10 @@ body {
 }
 
 .postit {
-	width: 40vw;
-	max-width: 35vh;
-	height: 40vw;
-	max-height: 35vh;
+	width: 38vw;
+	max-width: 34vh;
+	height: 38vw;
+	max-height: 34vh;
 	margin: 10px;
 	padding: 10px;
 	border-bottom-right-radius: 150px 10px;
@@ -195,6 +204,7 @@ p {
 strong {
 /*	margin-top: 30px;*/
 	text-align: center;
+	margin-left: 30px;
 }
 .name {
 	position: absolute;

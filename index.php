@@ -1,4 +1,51 @@
-<?php session_start(); ?><!DOCTYPE html>
+<?php session_start(); 
+require_once('util.php');
+
+$cmd = $_POST['cmd'] ?? null;
+	
+	switch ($cmd){
+		case 'createuser':
+			$un = filter_input(INPUT_POST, 'un') or die('Missing or illegal un parameter');	
+			$pw = filter_input(INPUT_POST, 'pw') or die('Missing or illegal pw parameter');	
+			if (createUser($un, $pw) > 0){
+				loginUser($un, $pw);
+			}
+			else {
+				echo '<div class="container notice"><p>Unable to create user - username already exists<p></div>';
+			}
+			break;
+		case 'login':
+//			echo 'checklogin';
+			$un = filter_input(INPUT_POST, 'un') or die('Missing or illegal un parameter');	
+			$pw = filter_input(INPUT_POST, 'pw') or die('Missing or illegal pw parameter');	
+			loginUser($un, $pw);
+			break;
+			
+		case 'logout':
+			logoutUser();
+			break;
+		
+		case 'create_postit':
+			create_postit();
+			break;
+			
+		case 'delete_postit':
+			delete_postit();
+			break;
+			
+		case 'choose_color':
+			choose_color();
+			break;
+			
+		default:
+			// ignore
+			echo 'unknown cmd='.$cmd;
+			
+	}
+	
+
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,100 +80,29 @@
 </head>
 
 <body>
+	
 
 <div class="container welcome-field">
 	
 	<h1>User status</h1>
-
-<?php
-	if(!isset($_SESSION['uid'])){ ?>
-	
-	
-<form id="new-user" action="" method="post">
-	<div class="container user-form">
-		<legend>New user</legend>
-		<input type="text" name="un" placeholder="Username" autocomplete="off" required >
-		<input type="password" name="pw" placeholder="Password" autocomplete="off" required>
-		<button  class="submit-button" type="submit">opret</button>
-	</div>
-	<?php 
-
-	$un = filter_input(INPUT_POST, 'un') or die ('Missing USERNAME parameters');
-	$pw = filter_input(INPUT_POST, 'pw') or die ('Missing PASSWORD parameters');
-	$pwhash = password_hash($pw, PASSWORD_DEFAULT);
-
-	require_once('dbcon.php');
-
-    $sql = 'INSERT INTO users (username, pwhash) VALUES (?, ?)';
-    $stmt = $link->prepare($sql);
-    $stmt->bind_param('ss', $un, $pwhash);
-		$stmt->execute();
-
-		if($stmt->affected_rows > 0) {
-		echo 'USER '.$un.' IS CREATED'.PHP_EOL;  
-		} 
-				 
-		else {
-		echo 'Can not create user '.$un.'. It already exists. Please use another name'.PHP_EOL;
-		 }
-		?>
-</form>
-
-	<p> or </p>	
-			
-<form id="login" action="" method="post">
-	
-	<div class="container user-form">
-		<legend>Login</legend>
-		<input type="text" name="un" placeholder="Username" required autocomplete="off">
-		<input type="password" name="pw" placeholder="Password" required autocomplete="off">
-		<button class="submit-button" type="submit">login</button>
-	</div>
-	
-<?php
-	$un = filter_input(INPUT_POST, 'un') or die ('Missing USER NAME parameters');
-	$pw = filter_input(INPUT_POST, 'pw') or die ('Missing PASSWORD parameters');
-
-	require_once('dbcon.php');
-
-    $sql = 'select id, pwhash from users where username=?;';
-    $stmt = $link->prepare($sql);
-    $stmt->bind_param('s', $un);
-		$stmt->execute();
-
-		$stmt->bind_result($id, $pwhash);
-
-		while($stmt->fetch()){}
-	
-			if (password_verify($pw, $pwhash)){ 
-	
-			echo '<strong>WELCOME user '.$un.' with id:</strong>'.$id.PHP_EOL;
-			$_SESSION['uid']=$id;
-			$_SESSION['uname']=$un;	
-			
-			}
-		
-
-			else { 
-			echo 'ILLEGAL passord for USER '.$un.''.PHP_EOL;
-			}
-?>
-
-</form>
-	
 	
 		
-<?php	}
-	else { ?>
-	
-	<strong>Currently logged in as <?=$_SESSION['uname']?> with id=<?=$_SESSION['uid']?></strong>
-		<form action="logout.php" method="post">
-			<button class="second-button" type="submit">Logout</button>
-		</form>
+<form action="<?=$_SERVER['PHP_SELF']?>" method="post">	
+	<div>
+<?php
+	if (isset($_SESSION['uid'])){ ?>	
+		<h2>Logged in as <?=$_SESSION['uname']?></h2>
+		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
+<?php } else { ?>
+		<h2>Login</h2>
+		<input type="text" name="un" placeholder="Username" required>
+		<input type="password" name="pw" placeholder="Password" required>
+		<button class="submit-button" type="submit" name="cmd" value="login">Login</button>
+		<button class="submit-button" type="submit" name="cmd" value="createuser">Create</button>
+<?php } ?>
+	</div>	
+</form>
 
-<?php	}
-	
-?>
 		
 	
 </div> <!--		end of welcome-field	-->
@@ -141,17 +117,18 @@
 	<div class=" container sidebar">
 
 		<h2>Post-it hvad man vil</h2>
-		<div>
+
 			<form action="new_post_it.php" method="post">
 				<h3>Overskrift:</h3>
 				<input class="textfield-small" type="text" name="headertext"  placeholder="Overskrift" autocomplete="off" required><br/>
 				<h3>Huskenote:</h3>
-				<textarea class="textfield-large" type="" name="bodytext" placeholder="Hvad skal man huske?" autocomplete="off" required></textarea>
+				<textarea class="textfield-large" type="text" name="bodytext" placeholder="Hvad skal man huske?" autocomplete="off" required></textarea>
 			
 				<h3>Post-it farve:</h3>
-				
+			
+
 				<?php
-		  require_once('dbcon.php');
+		  require('dbcon.php');
 		    $sql = 'select id, colorname from color';
 		    $stmt = $link->prepare($sql);
 		    $stmt->execute();
@@ -162,34 +139,46 @@
 		  ?>
 
 				<br/>
-				<button class="submit-button" name="submit" type="submit" value="submit-true"> Post it!</button>
+				<button class="submit-button" name="cmd" type="submit" value="submit-true"> Post it!</button>
 				<button class="second-button" name="reset" type="reset" value="reset">nullstil</button>
 
 			</form>
-							 
-		</div>
+						 
+	
 	</div>
 	
 	
+<!--WHAT TO DO HERE?-->
 	
 	<div class="container whiteboard">
+		
 		<!--		good code-->
-		<?php
-		require_once('dbcon.php');
-    $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, cssclass, users.id AS uid, username, cssclass 
+	<?php
+		require('dbcon.php');
+    $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, users.id AS uid, username, cssclass 
 	FROM postit, users, color 
 WHERE users_id = users.id AND color_id=color.id;';
 		
     $stmt = $link->prepare($sql);
 		$stmt->execute();
-	$stmt->bind_result($pid, $createdate, $htext, $btext, $cssclass, $uid, $username, $cssclass);
+	$stmt->bind_result($pid, $createdate, $htext, $btext, $uid, $username, $cssclass);
 	while ($stmt->fetch()) { ?>
 
 	<div class="draggable postit <?=$cssclass?>">
 
-<form action="delete_postit.php" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')">
-	<button type="submit" name="pid" value="<?=$pid?>"><i class="far fa-trash-alt fa-fa-lg" ></i></button>
-</form>
+<?php if($_SESSION['uid']==$uid) { ?>
+		
+	<form action="<?=$_SERVER['PHP_SELF']?>" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')">
+		
+	<input type="hidden" name="pid" value="<?=$pid?>">
+		
+	<button type="submit" name="cmd" value="delete_postit"><i class="far fa-trash-alt fa-fa-lg" ></i></button>
+
+	</form>
+		
+	<?php }	
+	 
+	?>	
 
 		<h2><?=$htext?></h2>
 		<p><?=$btext?></p>
@@ -198,6 +187,7 @@ WHERE users_id = users.id AND color_id=color.id;';
 	</div>
 
 <?php } ?>
+
 		
 <!--		end of good code-->
 
