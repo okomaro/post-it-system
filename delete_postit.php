@@ -10,7 +10,7 @@
 	  	$stmt = $link->prepare($sql);
     	$stmt->bind_param('ii', $postitid, $userid);
 		$stmt->execute();
-		header('Location: postit_board.php');
+		header('Location: index.php');
 		exit();
 	}
 else {

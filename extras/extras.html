@@ -32,7 +32,7 @@ if($S_SESSION['uid'])
 
 	<div class="draggable postit <?=$cssclass?>">
 
-<form action="delete_postit.php" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')" >
+<form action="../delete_postit.php" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')" >
 	<button type="submit" name="pid" value="<?=$pid?>"><i class="far fa-trash-alt fa-fa-lg" ></i></button>
 </form>
 

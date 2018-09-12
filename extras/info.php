@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<?php session_start(); ?><!doctype html>
+<html>
 <head>
-
-	<title>User login</title>
-
+<meta charset="UTF-8">
+<title>Untitled Document</title>
 </head>
 
 <body>
@@ -13,7 +11,7 @@
 	
 	if(isset($_SESSION['uid'])){ ?>
 		Currently logged in as <?=$_SESSION['uname']?> with id=<?=$_SESSION['uid']?>
-		<form action="logout.php" method="post">
+		<form action="../logout.php" method="post">
 			<button type="submit">Logout</button>
 		</form>
 		
@@ -23,8 +21,6 @@
 	}
 	
 ?>
-
 	
-
 </body>
 </html>

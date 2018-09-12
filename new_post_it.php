@@ -13,5 +13,5 @@
 	$stmt->execute();
 
 //	header('HTTP/1.1 303 See other');
-	header('Location: postit_board.php');
+	header('Location: index.php');
 	exit();

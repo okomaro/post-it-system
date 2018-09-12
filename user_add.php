@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-	<title>User login</title>
-
-</head>
-
-<body>
 
 <?php
 	$un = filter_input(INPUT_POST, 'un') or die ('Missing author parameters');
@@ -22,15 +12,12 @@
 		$stmt->execute();
 
 		if($stmt->affected_rows > 0) {
-		echo 'USER '.$un.' IS CREATED'.PHP_EOL;
-		}
+		echo 'USER '.$un.' IS CREATED'.PHP_EOL;  
+		} 
+				 
 		else {
 		echo 'Can not create user '.$un.'. It already exists. Please use another name'.PHP_EOL;
-		}
+		 }
+			
 
 	
-		?>
-	
-
-</body>
-</html>

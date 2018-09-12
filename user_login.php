@@ -1,14 +1,6 @@
-<?php session_start(); ?><!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>User login</title>
-</head>
-
-<body>
-
 <?php
-	
+	session_start();
+
 	$un = filter_input(INPUT_POST, 'un') or die ('Missing author parameters');
 	$pw = filter_input(INPUT_POST, 'pw') or die ('Missing headertext parameters');
 	
@@ -26,19 +18,12 @@
 	
 			if (password_verify($pw, $pwhash)){
 			echo 'Login granted for USER '.$un.' with id:'.$id.PHP_EOL;
+			echo '<a href="index.php">Continue</a>'.PHP_EOL;
 			$_SESSION['uid']=$id;
-			$_SESSION['uname']=$un;
-				
-				
+			$_SESSION['uname']=$un;	
 			}
-			else {
+
+			else { 
 			echo 'ILLEGAL passord for USER '.$un.''.PHP_EOL;
 			}
-		
-	?>
-	
-	<a href="postit_board.php">go to postit board</a> 
-	
 
-</body>
-</html>

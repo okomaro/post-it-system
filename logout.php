@@ -19,5 +19,6 @@ if (ini_get("session.use_cookies")) {
 // Finally, destroy the session.
 session_destroy();
 
-echo "You are now logged out :-(";
+header('Location: index.php');
+		exit();
 	

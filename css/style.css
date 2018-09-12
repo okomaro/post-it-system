@@ -36,11 +36,10 @@ body {
 }
 
 .welcome-field {
-/*	display: block;*/
 	display: flex;
 	flex-wrap: wrap;
-	justify-content:flex-start;
-	width: 100%;
+/*	justify-content:flex-start;*/
+	width: 70%;
 	border-radius: 20px;
 	border: 1px solid lightgray; 
 	order: -1;
@@ -94,6 +93,18 @@ body {
 	box-shadow: 3px 3px 3px -4px black;
 	/* font-family: 'Shadows Into Light', cursive; */
 	font-family: 'Coming Soon', cursive;
+}
+
+input {
+
+	text-indent: 5px;
+	font-size: 0.9em;
+}
+
+legend {
+	
+	font-size: 1.5em;
+	font-family: sans-serif;
 }
 
 .postit p {
@@ -167,6 +178,7 @@ h1 {
 	font-family: 'Coming Soon', cursive;
 }
 h2 {
+	font-family: 'Coming Soon', cursive;
 	font-size: 1.4em;
 	text-align: center;
 }
@@ -174,13 +186,15 @@ h3 {
 	font-size: 1.1em;
 	font-weight: 500;
 	margin-top: 15px;
+	display: block;
 }
 p {
 	font-size: 0.8em;
 }
 
 strong {
-	margin-top: 30px;
+/*	margin-top: 30px;*/
+	text-align: center;
 }
 .name {
 	position: absolute;
@@ -242,14 +256,13 @@ button {
 }
 
 .submit-button {
-	
 	font: 700 2em;
 	background: #fa619c;
 	font-size: 1em;
 	box-shadow: 1px 1px 5px #CBCBCB;
   
 }
-.reset-button {
+.second-button {
 	margin-left: 10px;
 	margin-bottom: 0;
 	font-size: .8em;
