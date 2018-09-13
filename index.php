@@ -39,7 +39,6 @@ $cmd = $_POST['cmd'] ?? null;
 			
 		default:
 			// ignore
-			echo 'unknown cmd='.$cmd;
 			
 	}
 	
@@ -91,7 +90,8 @@ $cmd = $_POST['cmd'] ?? null;
 	<div>
 <?php
 	if (isset($_SESSION['uid'])){ ?>	
-		<h2>Logged in as <?=$_SESSION['uname']?></h2>
+		<h2>Velkommen, <?=$_SESSION['uname']?>!</h2>
+		<p>Her kan du oprette og slette huskenoter.</p>
 		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
 <?php } else { ?>
 		<h2>Login</h2>
@@ -166,13 +166,13 @@ WHERE users_id = users.id AND color_id=color.id;';
 
 	<div class="draggable postit <?=$cssclass?>">
 
-<?php if($_SESSION['uid']==$uid) { ?>
+<?php if($_SESSION['uid']==$uid or $_SESSION['uid']===39 ) { ?>
 		
 	<form action="<?=$_SERVER['PHP_SELF']?>" method="post" onsubmit="return confirm('ER DU SIKKER? vil du slette post-it?')">
 		
 	<input type="hidden" name="pid" value="<?=$pid?>">
 		
-	<button type="submit" name="cmd" value="delete_postit"><i class="far fa-trash-alt fa-fa-lg" ></i></button>
+	<button type="submit" name="cmd" value="delete_postit"><i class="fas fa-trash-alt fa-2x"></i></button>
 
 	</form>
 		
