@@ -58,6 +58,8 @@ $cmd = $_POST['cmd'] ?? null;
 	
 	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700|Bonbon|Special+Elite&amp;subset=cyrillic" rel="stylesheet">
+	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -92,8 +94,8 @@ $cmd = $_POST['cmd'] ?? null;
 <?php
 	if (isset($_SESSION['uid'])){ ?>	
 		<h2>Welcome, <?=$_SESSION['uname']?>. You can create and delete your own post-its on this wall.</h2>
-		<button class="second-button" type="submit" name="cmd" value="logout">Logout</button>
-		<button class="second-button" type="submit" name="cmd" value="private">See only private post-its</button>
+		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
+		<button class="submit-button"type="submit" name="cmd" value="private">See only private post-its</button>
 <?php } else { ?>
 		Please log in to see the post-its.
 		<input type="text" name="un" placeholder="Username" required>

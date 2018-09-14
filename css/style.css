@@ -1,3 +1,10 @@
+/*fonts:
+font-family: 'Bonbon', cursive;
+font-family: 'Special Elite', cursive;
+font-family: 'Anonymous Pro', monospace;
+
+*/
+
 * {
 	margin: 0;
 	padding: 0;
@@ -9,7 +16,7 @@
 
 body {
 	margin: 40px;
-	font-family: sans-serif;
+	font-family: 'Anonymous Pro', monospace;
 	font-size: 1.2em;
 	display: flex;
 	flex-wrap: row wrap;
@@ -71,7 +78,8 @@ body {
 }
 
 .notice{
-	border: 1px solid red; 
+	position: relative;
+	border: 3px solid red; 
 /*	background-color: #ededed;*/
 	color: #F50D11;
 	border-radius: 20px;
@@ -98,14 +106,13 @@ body {
 	height: 38vw;
 	max-height: 34vh;
 	margin: 10px;
-	padding: 10px;
+	padding: 10px 20px;
 	border-bottom-right-radius: 150px 10px;
 	transform: rotate(-2deg);
 	-webkit-box-shadow: 0 15px 10px #777;
 	-moz-box-shadow: 0 15px 10px #777;
 	box-shadow: 3px 3px 3px -4px black;
-	/* font-family: 'Shadows Into Light', cursive; */
-	font-family: 'Coming Soon', cursive;
+	font-family: 'Anonymous Pro', monospace;
 }
 
 input {
@@ -120,15 +127,12 @@ legend {
 
 .postit-text {
   word-wrap: break-word;
-  max-height: 3.6em;
-  line-height: 1.8em;	
+  max-height: 9em;
+  line-height: 1.8em;
+	overflow: hidden;
 }
 
-.postit h2 {
-  word-wrap: break-word;
-  max-height: 3.6em;
-  line-height: 1.8em;	
-}
+
 
 .postit button {
 	position: absolute;
@@ -141,16 +145,20 @@ legend {
 
 .yellow {
 	background: linear-gradient(145deg, #FEE96E, #FFF7D3);
+	
 }
 .blue {
 	background: linear-gradient(145deg, #09BACC, #08D3F6);
+	
 }
 .green {
 	background: linear-gradient(145deg, #9AC64E, #B0E95A);
+	
 }
 
 .pink {
-	background: linear-gradient(145deg, #ff63c0, #ff0a9d);
+	background: linear-gradient(145deg, #ffa5f6, #ffcefa);
+	
 }
 
 .grey {
@@ -184,18 +192,25 @@ legend {
 }
 h1 {
 	font-size: 2em;
-	font-family: 'Coming Soon', cursive;
+	font-family: 'Anonymous Pro', monospace;
 }
 h2 {
-	font-family: 'Coming Soon', cursive;
+	font-family: 'Anonymous Pro', monospace;
 	font-size: 1.4em;
+	margin-top: 10px;
 /*	text-align: center;*/
 }
+
 .postit h2 {
-	text-align: center;
+  word-wrap: break-word;
+  max-height: 3.6em;
+  line-height: 1.3em;
+/*	text-align: center;*/
+
 }
 
 h3 {
+	font-family: 'Special Elite', cursive;
 	font-size: 1.1em;
 	font-weight: 500;
 	margin-top: 15px;
@@ -249,7 +264,7 @@ input {
 	margin-left: 10px;
 	margin-right: 5px;
 	margin-top: 10px;
-/*	font-family: 'Coming Soon', cursive;*/
+	font-family: 'Anonymous Pro', monospace;
 }
 
 
@@ -262,7 +277,7 @@ input {
 	border-radius: 20px;
 	border-style: hidden;
 	background: white;
-/*	font-family: 'Coming Soon', cursive;*/
+	font-family: 'Anonymous Pro', monospace;
 }
 .textfield-small {
 	font-size: 0.9em;
