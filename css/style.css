@@ -6,18 +6,19 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 body {
 	margin: 40px;
 	font-family: sans-serif;
 	font-size: 1.2em;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	flex-wrap: row wrap;
+
 }
 
 .container {
 	padding: 20px;
-	align-self: flex-start;
+
 }
 
 .user-form {
@@ -27,46 +28,49 @@ body {
 	border-radius: 20px;
 	border: 1px solid lightgray; 
 	margin: 10px;
-/*	background-color: #ededed;*/
+
 }
 
 
 .welcome-field {
-	display: flex;
+	position: absolute;
+	top: 0;
+	right:0;
+	display: flex table;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	width: 70%;
-	border-radius: 20px;
+	align-content: center;
+	width: 100%;
+	padding-top: 20px;
+	padding-left: 60px;
 	border: 1px solid lightgray; 
 	background-color: #ededed;
-	order: -1;
+	
 }
 
 .whiteboard {
 	width: 70%;
-	order: 0;
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 20px;
+	margin-top: 150px;
 	justify-content: center;
+	order: 0;
 }
 
 
 .sidebar {
 	display: flex;
 	flex-wrap: wrap;
-	width: 24%;
+	align-content:flex-start;
+	margin-top: 200px;
+	width: 25%;
 	min-width: 360px;
 	border-radius: 20px;
+	border: 1px solid lightgray; 
 	background-color: #ededed;
-	margin-top: 40px;
-	order: 1;
+	order: -1;
 }
 
 .notice{
-	position: absolute;
-	top:30%;
-	left:30%;
 	border: 1px solid red; 
 /*	background-color: #ededed;*/
 	color: #F50D11;
@@ -105,26 +109,22 @@ body {
 }
 
 input {
-
 	text-indent: 5px;
 	font-size: 0.9em;
 }
 
 legend {
-	
 	font-size: 1.5em;
 	font-family: sans-serif;
 }
 
-.postit p {
-display: block;
+.postit-text {
   word-wrap: break-word;
   max-height: 3.6em;
   line-height: 1.8em;	
 }
 
 .postit h2 {
-display: block;
   word-wrap: break-word;
   max-height: 3.6em;
   line-height: 1.8em;	
@@ -189,8 +189,12 @@ h1 {
 h2 {
 	font-family: 'Coming Soon', cursive;
 	font-size: 1.4em;
+/*	text-align: center;*/
+}
+.postit h2 {
 	text-align: center;
 }
+
 h3 {
 	font-size: 1.1em;
 	font-weight: 500;
@@ -245,7 +249,7 @@ input {
 	margin-left: 10px;
 	margin-right: 5px;
 	margin-top: 10px;
-	font-family: 'Coming Soon', cursive;
+/*	font-family: 'Coming Soon', cursive;*/
 }
 
 
@@ -253,12 +257,12 @@ input {
 	font-size: 0.9em;
 	margin: 10px 0;
 	padding: 20px;
-	max-height: 400px;
+	height: 250px;
 	width: 100%;
 	border-radius: 20px;
 	border-style: hidden;
 	background: white;
-	font-family: 'Coming Soon', cursive;
+/*	font-family: 'Coming Soon', cursive;*/
 }
 .textfield-small {
 	font-size: 0.9em;
@@ -317,7 +321,7 @@ body {
 
 .postit {
 	min-width: 25vh;
-	max-height: auto;
+	min-height: 25vh;
 	margin: 10px;
 }
 .postit p {
@@ -344,27 +348,40 @@ body {
 @media all and (max-width: 500px) {
 body {
 	/* On small screens, we are no longer using row direction but column */
-	flex-direction: column;
-	justify-content: center;
-	margin: 10px;
+	display: flex table-column;
+	flex-wrap: wrap;
+	justify-content:space-around;
+	align-content: center;
+	margin: 0;
 }
+	
+.welcome-field {
+	position: relative;
 
+	order: 1;
+	margin: 0;
+	align-content: center;
+}
+	
 .whiteboard {
 	order: 0;
 	width: 100%;
 	min-width: 300px;
+	margin-top: 20px;
+
 }
 
 .sidebar {
 		order: -1;
-			justify-content: flex-start;
 			width:100%;
 			max-width: 300px;
+	margin-top: 10px;
+
 }
 
 .sidebar h3 {
-		font-size: 0.9em;
-		margin-top: 0;
+		font-size: 1em;
+		margin-top: 10px;
 }
 
 .postit h2 {
@@ -381,6 +398,9 @@ time {
 		font-size: 0.6em;
 			margin: 0;
 }
+	h1 {
+			font-size:1em;
+	}
 
 
 }

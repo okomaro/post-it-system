@@ -83,22 +83,23 @@ $cmd = $_POST['cmd'] ?? null;
 
 <div class="container welcome-field">
 	
-	<h1>User status</h1>
+	<h1>Post it wall</h1>
 	
 		
 <form action="<?=$_SERVER['PHP_SELF']?>" method="post">	
 	<div>
+		
 <?php
 	if (isset($_SESSION['uid'])){ ?>	
-		<h2>Velkommen, <?=$_SESSION['uname']?>!</h2>
-		<p>Her kan du oprette og slette huskenoter.</p>
-		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
+		<h2>Welcome, <?=$_SESSION['uname']?>. You can create and delete your own post-its on this wall.</h2>
+		<button class="second-button" type="submit" name="cmd" value="logout">Logout</button>
+		<button class="second-button" type="submit" name="cmd" value="private">See only private post-its</button>
 <?php } else { ?>
-		<h2>Login</h2>
+		Please log in to see the post-its.
 		<input type="text" name="un" placeholder="Username" required>
 		<input type="password" name="pw" placeholder="Password" required>
 		<button class="submit-button" type="submit" name="cmd" value="login">Login</button>
-		<button class="submit-button" type="submit" name="cmd" value="createuser">Create</button>
+		<button class="submit-button" type="submit" name="cmd" value="createuser">Sign up</button>
 <?php } ?>
 	</div>	
 </form>
@@ -116,15 +117,15 @@ $cmd = $_POST['cmd'] ?? null;
 	
 	<div class=" container sidebar">
 
-		<h2>Post-it hvad man vil</h2>
+		<h2>Post whatever you want</h2>
 
 			<form action="new_post_it.php" method="post">
-				<h3>Overskrift:</h3>
-				<input class="textfield-small" type="text" name="headertext"  placeholder="Overskrift" autocomplete="off" required><br/>
-				<h3>Huskenote:</h3>
-				<textarea class="textfield-large" type="text" name="bodytext" placeholder="Hvad skal man huske?" autocomplete="off" required></textarea>
+				<h3>Headline:</h3>
+				<input class="textfield-small" type="text" name="headertext"  placeholder="Headline (max 30 letters)" autocomplete="off" required><br/>
+				<h3>Textfield:</h3>
+				<textarea class="textfield-large" type="text" name="bodytext" placeholder="What is on your mind? (max 200 letters)" autocomplete="off" required></textarea>
 			
-				<h3>Post-it farve:</h3>
+				<h3>Choose the color:</h3>
 			
 
 				<?php
@@ -140,7 +141,7 @@ $cmd = $_POST['cmd'] ?? null;
 
 				<br/>
 				<button class="submit-button" name="cmd" type="submit" value="submit-true"> Post it!</button>
-				<button class="second-button" name="reset" type="reset" value="reset">nullstil</button>
+				<button class="second-button" name="reset" type="reset" value="reset">reset</button>
 
 			</form>
 						 
@@ -181,7 +182,7 @@ WHERE users_id = users.id AND color_id=color.id;';
 	?>	
 
 		<h2><?=$htext?></h2>
-		<p><?=$btext?></p>
+		<p class="postit-text"><?=$btext?></p>
 		<p class="name"><?=$username?></p>
 		<time datetime="Y-M-D" ><?=$createdate?></time>
 	</div>
@@ -195,7 +196,7 @@ WHERE users_id = users.id AND color_id=color.id;';
 		
 <?php	}
 	else {
-		echo '<strong> You are not logged in and therefore can not see post-it system</strong>';
+		echo '<strong> </strong>';
 	}
 	
 ?>
