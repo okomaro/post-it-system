@@ -133,7 +133,7 @@ $cmd = $_POST['cmd'] ?? null;
 		    $stmt->execute();
 		    $stmt->bind_result($colorid, $colorname);
 		    while($stmt->fetch()){
-					echo '<input type="radio" name="colorid" value="'.$colorid.'">'.$colorname.PHP_EOL;
+					echo '<input class="response" type="radio" name="colorid" value="'.$colorid.'">'.$colorname.PHP_EOL;
 				
 				// how to insert label???
 		    }
