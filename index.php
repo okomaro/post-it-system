@@ -85,7 +85,7 @@ $cmd = $_POST['cmd'] ?? null;
 
 <div class="container welcome-field">
 	
-	<h1>Post it wall</h1>
+	<h1>Post whatever wall</h1>
 	
 		
 <form action="<?=$_SERVER['PHP_SELF']?>" method="post">	
@@ -95,9 +95,9 @@ $cmd = $_POST['cmd'] ?? null;
 	if (isset($_SESSION['uid'])){ ?>	
 		<h2>Welcome, <?=$_SESSION['uname']?>. You can create and delete your own post-its on this wall.</h2>
 		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
-		<button class="submit-button"type="submit" name="cmd" value="private">See only private post-its</button>
+		<button class="submit-button"type="submit" name="cmd" value="private" onClick="return confirm('UPS, the function is not ready yet!')">See only private post-its</button>
 <?php } else { ?>
-		Please log in to see the post-its.
+		Please log in or sign up to see the post-it wall.
 		<input class="textfield-small"type="text" name="un" placeholder="Username" required>
 		<input class="textfield-small" type="password" name="pw" placeholder="Password" required>
 		<button class="submit-button" type="submit" name="cmd" value="login">Login</button>
