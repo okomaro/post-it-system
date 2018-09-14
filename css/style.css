@@ -68,7 +68,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content:flex-start;
-	margin-top: 200px;
+	margin-top: 160px;
 	width: 25%;
 	min-width: 360px;
 	border-radius: 20px;
@@ -105,7 +105,7 @@ body {
 	max-width: 34vh;
 	height: 38vw;
 	max-height: 34vh;
-	margin: 10px;
+	margin: 15px;
 	padding: 10px 20px;
 	border-bottom-right-radius: 150px 10px;
 	transform: rotate(-2deg);

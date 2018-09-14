@@ -119,9 +119,9 @@ $cmd = $_POST['cmd'] ?? null;
 
 			<form action="new_post_it.php" method="post">
 				<h3>Headline:</h3>
-				<input class="textfield-small" type="text" name="headertext"  placeholder="Headline (max 30 symbols)" autocomplete="off" required><br/>
+				<input class="textfield-small" type="text" name="headertext" maxlength="30"  placeholder="Headline (max 30 symbols)" autocomplete="off" required><br/>
 				<h3>Textfield:</h3>
-				<textarea class="textfield-large" type="text" name="bodytext" placeholder="What is on your mind? (max 200 symbols)" autocomplete="off" required></textarea>
+				<textarea class="textfield-large" type="text" name="bodytext" maxlength="200" placeholder="What is on your mind? (max 200 symbols)" autocomplete="off" required></textarea>
 			
 				<h3>Choose the color:</h3>
 			
@@ -157,7 +157,7 @@ $cmd = $_POST['cmd'] ?? null;
 		require('dbcon.php');
     $sql = 'select postit.id AS pid, date(createdate), headertext, bodytext, users.id AS uid, username, cssclass 
 	FROM postit, users, color 
-WHERE users_id = users.id AND color_id=color.id;';
+WHERE users_id = users.id AND color_id=color.id order by createdate desc;';
 		
     $stmt = $link->prepare($sql);
 		$stmt->execute();
