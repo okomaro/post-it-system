@@ -52,9 +52,6 @@ $cmd = $_POST['cmd'] ?? null;
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Post whatever you want</title>
-
-
-<!--	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
 	
 	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
@@ -68,7 +65,6 @@ $cmd = $_POST['cmd'] ?? null;
 	
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	
-	<!-- main style - stays the last because it overrides the themes of jquery -->
 	<link rel="stylesheet" href="css/style.css">
 
 
@@ -93,7 +89,7 @@ $cmd = $_POST['cmd'] ?? null;
 		
 <?php
 	if (isset($_SESSION['uid'])){ ?>	
-		<h2>Welcome, <?=$_SESSION['uname']?>. You can create and delete your own post-its on this wall.</h2>
+		<h3>Welcome, <?=$_SESSION['uname']?>. You can create and delete your own post-its on this wall.</h3>
 		<button class="submit-button" type="submit" name="cmd" value="logout">Logout</button>
 		<button class="submit-button"type="submit" name="cmd" value="private" onClick="return confirm('UPS, the function is not ready yet!')">See only private post-its</button>
 <?php } else { ?>
@@ -123,9 +119,9 @@ $cmd = $_POST['cmd'] ?? null;
 
 			<form action="new_post_it.php" method="post">
 				<h3>Headline:</h3>
-				<input class="textfield-small" type="text" name="headertext"  placeholder="Headline (max 30 letters)" autocomplete="off" required><br/>
+				<input class="textfield-small" type="text" name="headertext"  placeholder="Headline (max 30 symbols)" autocomplete="off" required><br/>
 				<h3>Textfield:</h3>
-				<textarea class="textfield-large" type="text" name="bodytext" placeholder="What is on your mind? (max 200 letters)" autocomplete="off" required></textarea>
+				<textarea class="textfield-large" type="text" name="bodytext" placeholder="What is on your mind? (max 200 symbols)" autocomplete="off" required></textarea>
 			
 				<h3>Choose the color:</h3>
 			
@@ -138,6 +134,8 @@ $cmd = $_POST['cmd'] ?? null;
 		    $stmt->bind_result($colorid, $colorname);
 		    while($stmt->fetch()){
 					echo '<input type="radio" name="colorid" value="'.$colorid.'">'.$colorname.PHP_EOL;
+				
+				// how to insert label???
 		    }
 		  ?>
 
@@ -151,7 +149,6 @@ $cmd = $_POST['cmd'] ?? null;
 	</div>
 	
 	
-<!--WHAT TO DO HERE?-->
 	
 	<div class="container whiteboard">
 		
@@ -198,7 +195,7 @@ WHERE users_id = users.id AND color_id=color.id;';
 		
 <?php	}
 	else {
-		echo '<strong> </strong>';
+		echo '';
 	}
 	
 ?>
