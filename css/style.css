@@ -283,7 +283,7 @@ input {
 	font-size: 0.9em;
 	margin: 10px 0;
 	padding: 20px;
-	height: 10px;
+	height: auto;
 	max-width: 400px;
 	width: 100%;
 	border-radius: 20px;

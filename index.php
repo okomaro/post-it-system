@@ -98,8 +98,8 @@ $cmd = $_POST['cmd'] ?? null;
 		<button class="submit-button"type="submit" name="cmd" value="private">See only private post-its</button>
 <?php } else { ?>
 		Please log in to see the post-its.
-		<input type="text" name="un" placeholder="Username" required>
-		<input type="password" name="pw" placeholder="Password" required>
+		<input class="textfield-small"type="text" name="un" placeholder="Username" required>
+		<input class="textfield-small" type="password" name="pw" placeholder="Password" required>
 		<button class="submit-button" type="submit" name="cmd" value="login">Login</button>
 		<button class="submit-button" type="submit" name="cmd" value="createuser">Sign up</button>
 <?php } ?>
