@@ -61,8 +61,6 @@ $cmd = $_POST['cmd'] ?? null;
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	
 	<link rel="stylesheet" href="css/style.css">
@@ -133,7 +131,7 @@ $cmd = $_POST['cmd'] ?? null;
 		    $stmt->execute();
 		    $stmt->bind_result($colorid, $colorname);
 		    while($stmt->fetch()){
-					echo '<input class="response" type="radio" name="colorid" value="'.$colorid.'">'.$colorname.PHP_EOL;
+					echo '<label><input class="response" type="radio" name="colorid" value="'.$colorid.'">'.$colorname.'</label>'.PHP_EOL;
 				
 				// how to insert label???
 		    }
@@ -160,7 +158,7 @@ $cmd = $_POST['cmd'] ?? null;
 WHERE users_id = users.id AND color_id=color.id order by createdate desc;';
 		
     $stmt = $link->prepare($sql);
-		$stmt->execute();
+	$stmt->execute();
 	$stmt->bind_result($pid, $createdate, $htext, $btext, $uid, $username, $cssclass);
 	while ($stmt->fetch()) { ?>
 
@@ -180,9 +178,9 @@ WHERE users_id = users.id AND color_id=color.id order by createdate desc;';
 	 
 	?>	
 
-		<h2><?=$htext?></h2>
-		<p class="postit-text"><?=$btext?></p>
-		<p class="name"><?=$username?></p>
+		<h2><?=htmlentities($htext)?></h2>
+		<p class="postit-text"><?=htmlentities($btext)?></p>
+		<p class="name"><?=htmlentities($username)?></p>
 		<time datetime="Y-M-D" ><?=$createdate?></time>
 	</div>
 
